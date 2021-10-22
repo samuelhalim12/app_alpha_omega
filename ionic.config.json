@@ -1,0 +1,7 @@
+{
+  "name": "ionic_week09",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
