@@ -1,0 +1,97 @@
+<!-- <ion-toolbar color="dark">
+  <ion-title>Detail Draft Order</ion-title>
+</ion-toolbar>
+<ion-card>
+  <ion-card-content>
+    <h2><b>ID : </b></h2>
+    <h2>{{certainOrderTemp.hjual_temp_id}}</h2><br>
+    <h2><b>Nama Pembeli : </b></h2>
+    <h2> {{certainOrderTemp.hjual_temp_pembeli}}</h2><br>
+    <h2><b>Tanggal Beli : </b></h2>
+    <h2> {{certainOrderTemp.hjual_temp_tanggal}}</h2><br>
+    <h2><b>Total Harga : </b></h2>
+    <h2> Rp. {{certainOrderTemp.hjual_temp_jumlah}}</h2><br>
+    <h2><b>Barang : </b></h2>
+    <h2 *ngFor="let pr of barang_jumlah; let i = index;">- {{pr.djual_temp_banyak}} {{pr.barang_nama}}</h2><br>
+
+  </ion-card-content>
+</ion-card> -->
+
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title>Detail Draft Order</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <br>
+    <h4 style="margin-left:4%;">ID : {{certainOrderTemp.hjual_temp_id}}</h4>
+    <h4 style="margin-left:4%;">Tanggal Beli : {{certainOrderTemp.formattedDate}}</h4>
+    <h4 style="margin-left:4%;">Total Harga : Rp {{thousandSeparator(certainOrderTemp.hjual_temp_jumlah)}}</h4>
+    <h4 style="margin-left:4%;">Detail Barang</h4>
+    <ion-list>
+      <ion-item style="overflow-y:scroll!important;" *ngFor="let pr of barang_jumlah; let i = index;">
+
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label>
+                <h3>{{pr.barang_nama}}</h3>
+                <p>{{pr.barang_deskripsi}}</p>
+                <p>Rp {{thousandSeparator(pr.barang_hargajual)}}</p>
+                <!-- Jumlah Barang : -->
+
+                <!-- <ion-input type="number" [(ngModel)]="pr.djual_temp_banyak"></ion-input> -->
+                <!-- (ionChange)="updateAmount(i)" -->
+              </ion-label>
+            </ion-col>
+
+            <!-- <p>Jumlah Barang : {{pr.amount}}</p> -->
+            <!-- create input box -->
+            <ion-col>
+              <ion-icon name="trash" style='zoom:2.0;float: right;' (click)="deleteItem(i)"></ion-icon>
+            </ion-col>
+            <!-- <ion-buttons slot="end">
+              <ion-button (click)="editItem(i)">
+                <ion-label class="ion-text-start">Edit</ion-label>
+
+              </ion-button>
+              <ion-button (click)="deleteItem(i)">
+                <ion-label class="ion-text-start">Delete</ion-label>
+
+              </ion-button>
+            </ion-buttons> -->
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button color="medium" expand="block" (click)="minusAmount(i)">-</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-input class="ion-text-center" type="number" [(ngModel)]="pr.djual_temp_banyak"></ion-input>
+            </ion-col>
+            <ion-col>
+              <ion-button color="medium" expand="block" (click)="pr.djual_temp_banyak=pr.djual_temp_banyak+1">+
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+    <br>
+    <ion-item>
+      <ion-label>Nama Pembeli : </ion-label>
+      <ion-input placeholder="{{certainOrderTemp.hjual_temp_pembeli}}" value="{{certainOrderTemp.hjual_temp_pembeli}}"
+        [(ngModel)]="certainOrderTemp.hjual_temp_pembeli"></ion-input>
+    </ion-item>
+  </ion-content>
+  <ion-footer slot="fixed" vertical="bottom">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="buttonSave()">Save</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+</ion-app>

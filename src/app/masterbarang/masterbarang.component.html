@@ -1,0 +1,37 @@
+<ion-app>
+  <ion-header slot="fixed">
+    <ion-toolbar color="dark">
+      <ion-title>Master Barang</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar style="margin-top:4%" (ionChange)=searchFunction() [(ngModel)]="searchText"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+        refreshingSpinner="circles" refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+      <ion-item style="overflow-y:scroll!important;" *ngFor="let pr of masterBarangPagination; let i = index;"
+        routerLink='/updatemasterbarang/{{pr.barang_kode}}' ion-long-press (pressed)="handleButtonPress(i)">
+        <!-- routerLink='/detailmasterbarang/{{pr.barang_kode}}' -->
+        <ion-label>
+          <h3>{{pr.barang_nama}}</h3>
+          <p>{{pr.barang_deskripsi}}</p>
+          <p>Rp {{thousandSeparator(pr.barang_hargajual)}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll threshold="5%" id="infinite-scroll" (ionInfinite)="loadProductMore($event)">
+      <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button routerLink="/insertnewbarang">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-app>

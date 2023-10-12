@@ -1,0 +1,45 @@
+<ion-app>
+  <ion-content>
+    <ion-toolbar color="dark">
+      <ion-title>Detail Supplier</ion-title>
+    </ion-toolbar>
+    <ion-item>
+      <ion-label position='stacked'>ID Supplier</ion-label>
+      <ion-input [(ngModel)]="supplier_id" placeholder="{{certainSupplier.supplier_id}}"
+        value="{{certainSupplier.supplier_id}}" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Nama Supplier</ion-label>
+      <ion-input type='string' [(ngModel)]="supplier_nama" placeholder="{{certainSupplier.supplier_nama}}"
+        value="{{certainSupplier.supplier_nama}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Alamat</ion-label>
+      <ion-input type='string' [(ngModel)]="supplier_alamat" placeholder="{{certainSupplier.supplier_alamat}}"
+        value="{{certainSupplier.supplier_alamat}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Telepon</ion-label>
+      <ion-input type='string' [(ngModel)]="supplier_telepon" placeholder="{{certainSupplier.supplier_telepon}}"
+        value="{{certainSupplier.supplier_telepon}}"></ion-input>
+    </ion-item>
+  </ion-content>
+
+  <!-- <ion-button expand='block' (click)="updateSupplier()">Update
+</ion-button> -->
+  <ion-footer vertical="bottom" slot="fixed">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="updateSupplier()">Save</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="danger" (click)="deleteMasterSupplier(certainSupplier.supplier_id)">Delete
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+</ion-app>

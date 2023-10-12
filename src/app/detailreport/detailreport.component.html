@@ -1,0 +1,71 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title>Detail Laporan Laba/Rugi</ion-title>
+      <ion-icon style="zoom:2.0;" name="filter-outline" slot="end" (click)="openModalFilter()"></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <!-- <ion-item>
+      <h3>Filter</h3>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Bulan</ion-label>
+      <ion-select interface="popover" [(ngModel)]="bulan" placeholder="Bulan" [compareWith]="compareFn">
+        <ion-select-option value="1">January</ion-select-option>
+        <ion-select-option value="2">February</ion-select-option>
+        <ion-select-option value="3">March</ion-select-option>
+        <ion-select-option value="4">April</ion-select-option>
+        <ion-select-option value="5">May</ion-select-option>
+        <ion-select-option value="6">June</ion-select-option>
+        <ion-select-option value="7">July</ion-select-option>
+        <ion-select-option value="8">August</ion-select-option>
+        <ion-select-option value="9">September</ion-select-option>
+        <ion-select-option value="10">October</ion-select-option>
+        <ion-select-option value="11">November</ion-select-option>
+        <ion-select-option value="12">December</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Tahun</ion-label>
+      <ion-input type='string' [(ngModel)]="tahun" placeholder="Tahun"></ion-input>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="reportList()">Go</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card>
+      <ion-card-content>
+        <h2><b>Total Untung/Rugi : </b></h2>
+        <h2>Rp. {{totalKeuntungan}}</h2><br>
+      </ion-card-content>
+    </ion-card> -->
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+        refreshingSpinner="circles" refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+      <ion-item style="overflow-y:scroll!important;" *ngFor="let pr of masterSupplier; let i = index;">
+        <ion-label>
+          <h2>Tanggal : {{pr.tanggal}}</h2>
+          <h3>Nama Barang : {{pr.barang_nama}}</h3>
+          <h3>Pendapatan : {{pr.djual_banyak}} * {{pr.harga_jual}} = Rp {{thousandSeparator(pendapatan[i])}}</h3>
+          <h3>Biaya : {{pr.djual_banyak}} * {{pr.harga_beli}} = Rp {{thousandSeparator(biaya[i])}}</h3>
+          <h3>Selisih : Rp {{thousandSeparator(selisih[i])}} ({{tipeProfit[i]}})</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-app>
+<!-- <ion-button style="padding-left: 4%;" (click)="updateItem(certainItem.barang_kode)">Update</ion-button>
+<ion-button style="padding-right: 4%;float:right;"color="danger" (click)="deleteMasterBarang(certainItem.barang_kode)">Delete</ion-button> -->
+
+<!-- <ion-grid>
+  <ion-row><ion-col><ion-button expand="block" (click)="updateItem(certainItem.barang_kode)">Update</ion-button></ion-col></ion-row>
+    <ion-row><ion-col>
+      <ion-button expand="block" color="danger" (click)="deleteMasterBarang(certainItem.barang_kode)">Delete</ion-button></ion-col></ion-row>
+</ion-grid> -->

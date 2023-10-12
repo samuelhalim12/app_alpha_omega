@@ -1,0 +1,47 @@
+<!-- <ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Draft Order</ion-title>
+    <ion-icon style="zoom:2.0;" name="add-circle-outline" slot="end" routerLink="/insertnewordertemp"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-toolbar>
+
+  <ion-searchbar style="margin-top:4%" (ionChange)=searchFunction() [(ngModel)]="searchText"></ion-searchbar>
+</ion-toolbar>
+<ion-list>
+  <ion-item style="overflow-y:scroll!important;" *ngFor="let pr of orderTemp; let i = index;" routerLink="/detailordertemp/{{pr.hjual_temp_id}}" ion-long-press (pressed)="handleButtonPress(i)">
+    <ion-label>
+      <h3>{{pr.hjual_temp_pembeli}}</h3>
+      <p>Total : Rp. {{pr.hjual_temp_jumlah}}</p>
+    </ion-label>
+  </ion-item>
+</ion-list> -->
+
+<ion-app>
+  <ion-header slot="fixed">
+    <ion-toolbar color="dark">
+      <ion-title>Draft Order</ion-title>
+
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar style="margin-top:4%" (ionChange)=searchFunction() [(ngModel)]="searchText"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item style="overflow-y:scroll!important;" *ngFor="let pr of orderTemp; let i = index;"
+        routerLink='/detailordertemp/{{pr.hjual_temp_id}}'>
+        <ion-label>
+          <h3>{{pr.hjual_temp_pembeli}}</h3>
+          <p>Total : Rp {{thousandSeparator(pr.hjual_temp_jumlah)}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button routerLink="/insertnewordertemp">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-app>

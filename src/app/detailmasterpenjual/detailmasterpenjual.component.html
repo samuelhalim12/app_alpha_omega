@@ -1,0 +1,34 @@
+<ion-toolbar color="dark">
+  <ion-title>Detail Penjual</ion-title>
+</ion-toolbar>
+<ion-card>
+  <ion-card-content>
+    <h2><b>ID Penjual : </b></h2>
+    <h2>{{certainSeller.penjual_id}}</h2><br>
+    <h2><b>Nama Penjual : </b></h2>
+    <h2> {{certainSeller.penjual_nama}}</h2><br>
+    <h2><b>Tanggal Masuk : </b></h2>
+    <h2> {{certainSeller.penjual_tanggalmasuk}}</h2><br>
+    <h2><b>Username : </b></h2>
+    <h2> Rp. {{certainSeller.penjual_username}}</h2><br>
+    <h2><b>Password : </b></h2>
+    <h2> Rp. {{certainSeller.penjual_password}}</h2><br>
+    <h2><b>Role : </b></h2>
+    <h2> {{certainSeller.role}}</h2><br>
+  </ion-card-content>
+</ion-card>
+<!-- <ion-button style="padding-left: 4%;" (click)="updateSeller(certainSeller.penjual_id)">Update</ion-button>
+<ion-button style="padding-right: 4%;float:right;"color="danger" (click)="deleteMasterPenjual(certainSeller.penjual_id)">Delete</ion-button> -->
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" (click)="updateSeller(certainSeller.penjual_id)">Update</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="danger" (click)="deleteMasterPenjual(certainSeller.penjual_id)">Delete
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

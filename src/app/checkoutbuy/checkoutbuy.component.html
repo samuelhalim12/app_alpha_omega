@@ -1,0 +1,123 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title>Checkout Buy</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <br>
+    <h4 style="margin-left:4%;">Detail Barang</h4>
+    <ion-list>
+      <ion-item style="overflow-y:scroll!important;" *ngFor="let pr of masterBarangBasketBuy; let i = index;">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label>
+                <h3>{{pr.barang_nama}}</h3>
+                <p>{{pr.barang_deskripsi}}</p>
+                <!-- Jumlah Barang : -->
+
+                <!-- <ion-input type="number" [(ngModel)]="pr.djual_temp_banyak"></ion-input> -->
+                <!-- (ionChange)="updateAmount(i)" -->
+              </ion-label>
+            </ion-col>
+            <!-- <p>Jumlah Barang : {{pr.amount}}</p> -->
+            <!-- create input box -->
+            <ion-col>
+              <ion-icon name="trash" style='zoom:2.0;float: right;' (click)="deleteItem(i)"></ion-icon>
+            </ion-col>
+            <!-- <ion-buttons slot="end">
+              <ion-button (click)="editItem(i)">
+                <ion-label class="ion-text-start">Edit</ion-label>
+
+              </ion-button>
+              <ion-button (click)="deleteItem(i)">
+                <ion-label class="ion-text-start">Delete</ion-label>
+
+              </ion-button>
+            </ion-buttons> -->
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>Rp. </ion-label>
+                <ion-input value="{{pr.barang_hargabeli_baru}}" [(ngModel)]="pr.barang_hargabeli_baru"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button color="medium" expand="block" (click)="minusAmount(i)">-</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-input class="ion-text-center" type="number" [(ngModel)]="pr.amount" (ionChange)="totalBuyPrice()">
+              </ion-input>
+
+            </ion-col>
+            <ion-col>
+              <ion-button color="medium" expand="block" (click)="pr.amount=pr.amount+1">+
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <!-- <ion-label>
+          <h3>{{pr.barang_nama}}</h3>
+          <p>{{pr.barang_deskripsi}}</p>
+          <p>Rp. {{pr.barang_hargajual}}</p>
+          Jumlah Barang :
+          <ion-input type="number" [(ngModel)]="pr.amount" (ionChange)="updateAmount(i)"></ion-input>
+        </ion-label> -->
+
+
+        <!-- <ion-buttons slot="end">
+           <ion-button (click)="deleteItem(i)">
+            <ion-label class="ion-text-start">Delete</ion-label>
+          </ion-button>
+        </ion-buttons> -->
+      </ion-item>
+    </ion-list>
+    <br>
+    <!-- <ion-item>
+      <ion-label>Supplier : </ion-label>
+      <ion-input placeholder="{{namaPembeli}}" value="{{namaPembeli}}" [(ngModel)]="namaPembeli"></ion-input>
+    </ion-item> -->
+    <ion-item>
+      <ion-label position='stacked'>Nama Supplier</ion-label>
+      <ion-select interface="popover" [(ngModel)]="idSupplier" [compareWith]="compareFn" (ionChange)="gantiIdSupplier()">
+
+        <ion-select-option value="{{ms.supplier_id}}" *ngFor="let ms of masterSupplier; let i = index;">
+          {{ms.supplier_nama}}</ion-select-option>
+        <!-- <ion-select-option value="Pegawai">Pegawai</ion-select-option> -->
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Metode Pembayaran</ion-label>
+      <ion-select interface="popover" [(ngModel)]="metodePembayaran" [compareWith]="compareFn" (ionChange)="gantiMetodePembayaran()">
+
+        <!-- <ion-select-option value="{{ms.supplier_id}}" *ngFor="let ms of masterSupplier; let i = index;">{{ms.supplier_nama}}</ion-select-option> -->
+        <ion-select-option value="Cash">Cash</ion-select-option>
+        <ion-select-option value="Transfer">Transfer</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Nominal Bayar</ion-label>
+      <ion-input type="number" [(ngModel)]="nominalBayar" (ionChange)="hitungKembalian()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <p>Total : Rp {{thousandSeparator(hjual_temp_jumlah)}}</p>
+    </ion-item>
+    <ion-item>
+      <p>Kembalian : Rp {{thousandSeparator(kembalian)}}</p>
+    </ion-item>
+  </ion-content>
+  <ion-footer vertical="bottom" slot="fixed">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="buttonOK()">OK</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+</ion-app>

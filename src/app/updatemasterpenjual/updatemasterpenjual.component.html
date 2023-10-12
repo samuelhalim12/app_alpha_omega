@@ -1,0 +1,59 @@
+<ion-app>
+  <ion-toolbar color="dark">
+    <ion-title>Detail User</ion-title>
+  </ion-toolbar>
+  <ion-content>
+    <ion-item>
+      <ion-label position='stacked'>ID</ion-label>
+      <ion-input [(ngModel)]="penjual_id" placeholder="{{certainSeller.penjual_id}}"
+        value="{{certainSeller.penjual_id}}" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Nama</ion-label>
+      <ion-input type='string' [(ngModel)]="penjual_nama" placeholder="{{certainSeller.penjual_nama}}"
+        value="{{certainSeller.penjual_nama}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Username</ion-label>
+      <ion-input type='string' [(ngModel)]="penjual_username" placeholder="{{certainSeller.penjual_username}}"
+        value="{{certainSeller.penjual_username}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Password</ion-label>
+      <ion-input type='string' [(ngModel)]="penjual_password" placeholder="{{certainSeller.penjual_password}}"
+        value="{{certainSeller.penjual_password}}"></ion-input>
+    </ion-item>
+    <!-- <ion-item>
+  <ion-label position='stacked'>Role</ion-label>
+  <ion-input type='string' [(ngModel)]="role" placeholder="{{certainSeller.role}}" value="{{certainSeller.role}}"></ion-input>
+</ion-item> -->
+    <ion-item>
+      <ion-label position='stacked'>Role</ion-label>
+      <ion-select interface="popover" [(ngModel)]="role" placeholder="Role" [compareWith]="compareFn">
+        <ion-select-option value="Admin">Admin</ion-select-option>
+        <ion-select-option value="Pegawai">Pegawai</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tanggal Masuk : {{certainSeller.penjual_tanggalmasuk}}</ion-label>
+    </ion-item>
+  </ion-content>
+
+  <!-- <ion-button expand='block' (click)="updateSeller()">Update
+</ion-button> -->
+  <ion-footer vertical="bottom" slot="fixed">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="updateSeller()">Save</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="danger" (click)="deleteMasterPenjual(certainSeller.penjual_id)">Delete
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+</ion-app>

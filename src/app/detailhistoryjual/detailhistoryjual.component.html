@@ -1,0 +1,31 @@
+<ion-toolbar color="dark">
+  <ion-title>Detail History Jual</ion-title>
+</ion-toolbar>
+<ion-card>
+  <ion-card-content>
+    <h2><b>Pembeli : </b></h2>
+    <h2>{{certainItem.hjual_pembeli}}</h2><br>
+    <h2><b>ID Penjual : </b></h2>
+    <h2> {{certainItem.penjual_id}}</h2><br>
+    <h2><b>Tanggal : </b></h2>
+    <h2> {{certainItem.formatted_hjual_tanggal}}</h2><br>
+    <h2><b>Total : </b></h2>
+    <h2> Rp {{thousandSeparator(certainItem.hjual_total)}}</h2><br>
+    <h2><b>Cash : </b></h2>
+    <h2> Rp {{thousandSeparator(certainItem.hjual_cash)}}</h2><br>
+    <h2><b>Transfer : </b></h2>
+    <h2> Rp {{thousandSeparator(certainItem.hjual_transfer)}}</h2><br>
+    <h2><b>Kembalian : </b></h2>
+    <h2> Rp {{thousandSeparator(certainItem.hjual_kembalian)}}</h2><br>
+    <h2><b>Detail Barang : </b></h2>
+    <h2 *ngFor="let pr of barang_jumlah; let i = index;">- {{pr.djual_banyak}} {{pr.barang_nama}}</h2><br>
+  </ion-card-content>
+</ion-card>
+<!-- <ion-button style="padding-left: 4%;" (click)="updateItem(certainItem.barang_kode)">Update</ion-button>
+<ion-button style="padding-right: 4%;float:right;"color="danger" (click)="deleteMasterBarang(certainItem.barang_kode)">Delete</ion-button> -->
+
+<!-- <ion-grid>
+  <ion-row><ion-col><ion-button expand="block" (click)="updateItem(certainItem.barang_kode)">Update</ion-button></ion-col></ion-row>
+    <ion-row><ion-col>
+      <ion-button expand="block" color="danger" (click)="deleteMasterBarang(certainItem.barang_kode)">Delete</ion-button></ion-col></ion-row>
+</ion-grid> -->

@@ -1,0 +1,46 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title *ngIf="!isEdit">Add Item</ion-title>
+      <ion-title *ngIf="isEdit">Edit Item</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="dismissModal()">Close</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card>
+      <ion-card-content>
+        <h2><b>Nama Barang : </b></h2>
+        <h2> {{barang_nama}}</h2><br>
+        <h2><b>Deskripsi Barang : </b></h2>
+        <h2> {{barang_deskripsi}}</h2><br>
+        <h2><b>Harga Jual : </b></h2>
+        <h2> Rp. {{barang_hargajual}}</h2><br>
+      </ion-card-content>
+    </ion-card>
+    <!-- make ion grid-->
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button color="medium" expand="block" (click)="minusAmount()">-</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-input class="ion-text-center" style="font-size:1.6rem;" type="number" value="{{amount}}"
+            [(ngModel)]="amount"></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-button color="medium" expand="block" (click)="amount=amount+1">+</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="confirmation()" *ngIf="!isEdit">Add</ion-button>
+          <ion-button expand="block" (click)="confirmation()" *ngIf="isEdit">OK</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </ion-content>
+</ion-app>

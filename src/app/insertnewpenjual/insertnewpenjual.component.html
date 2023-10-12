@@ -1,0 +1,41 @@
+<ion-toolbar color="dark">
+  <ion-title>Insert User</ion-title>
+</ion-toolbar>
+<ion-item>
+  <ion-label position='stacked'>Nama</ion-label>
+  <ion-input type='string' [(ngModel)]="penjual_nama" placeholder="Nama"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='stacked'>Username</ion-label>
+  <ion-input type='string' [(ngModel)]="penjual_username" placeholder="Username"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='stacked'>Password</ion-label>
+  <ion-input type='string' [(ngModel)]="penjual_password" placeholder="Password"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='stacked'>Repeat Password</ion-label>
+  <ion-input type='string' [(ngModel)]="penjual_repeat_password" placeholder="Repeat Password"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='stacked'>Role</ion-label>
+  <ion-select interface="popover" [(ngModel)]="role" placeholder="Role">
+    <ion-select-option value="Admin">Admin</ion-select-option>
+    <ion-select-option value="Pegawai">Pegawai</ion-select-option>
+  </ion-select>
+</ion-item>
+<!-- <ion-item>
+  <ion-img src="{{ productUrl }}">
+  </ion-img>
+  <ion-button (click)="ambilFoto()">
+    foto</ion-button>
+</ion-item> -->
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-button expand='block' (click)="insertSeller()">Insert
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

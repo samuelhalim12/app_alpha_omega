@@ -1,0 +1,25 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title size="large">Register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card>
+      <ion-chip *ngIf="register_error">{{register_error}}</ion-chip>
+      <ion-item>
+        <ion-input name="username" type="username" placeholder="John Doe" [(ngModel)]='register_username'>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]='register_user_email'>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input name="password" type="password" placeholder="Password" [(ngModel)]='register_passwd'>
+        </ion-input>
+      </ion-item>
+      <ion-button type="submit" expand="block" (click)='register()'>Register</ion-button>
+    </ion-card>
+  </ion-content>
+</ion-app>

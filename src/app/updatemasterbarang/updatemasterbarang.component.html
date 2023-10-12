@@ -1,0 +1,76 @@
+<ion-app>
+  <ion-toolbar color="dark">
+    <ion-title>Detail Barang</ion-title>
+  </ion-toolbar>
+  <ion-content>
+    <ion-item>
+      <ion-label position='stacked'>Kode Barang</ion-label>
+      <ion-input [(ngModel)]="barang_kode" placeholder="{{certainItem.barang_kode}}" value="{{certainItem.barang_kode}}"
+        readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Nama Barang</ion-label>
+      <ion-input type='string' [(ngModel)]="barang_nama" placeholder="{{certainItem.barang_nama}}"
+        value="{{certainItem.barang_nama}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Deskripsi Barang</ion-label>
+      <ion-input type='string' [(ngModel)]="barang_deskripsi" placeholder="{{certainItem.barang_deskripsi}}"
+        value="{{certainItem.barang_deskripsi}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Harga Jual</ion-label>
+      <ion-input type='string' [(ngModel)]="barang_hargajual" placeholder="{{certainItem.barang_hargajual}}"
+        value="{{certainItem.barang_hargajual}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position='stacked'>Harga Beli</ion-label>
+      <ion-input type='string' [(ngModel)]="barang_hargabeli" placeholder="{{certainItem.barang_hargabeli}}"
+        value="{{certainItem.barang_hargabeli}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Last Update Harga Jual : {{certainItem.barang_lastupdate_hjual}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Last Update Harga Beli : {{certainItem.barang_lastupdate_hbeli}}</ion-label>
+    </ion-item>
+    <ion-card>
+      <ion-card-content>
+        <h2><b>Stok Total </b>: {{certainItem.barang_stok}}</h2>
+        <h2><b>Rincian Stok </b>:</h2>
+        <h2 *ngFor="let pr of rincian_stok; let i = index;">- {{pr.stok}} pcs, tanggal {{pr.tanggal}}
+          <h3 *ngFor="let pr2 of detail_rincian_stok[i]; let i2 = index;">* {{pr2.stok2}} pcs, H. Beli Rp {{thousandSeparator(pr2.harga_beli2)}}</h3>
+          <br></h2>
+
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  <!-- <ion-item>
+  <ion-label position='stacked'>Status Barang</ion-label>
+  <ion-input type='string' [(ngModel)]="barang_status" placeholder="{{certainItem.barang_status}}" value="{{certainItem.barang_status}}"></ion-input>
+</ion-item> -->
+  <!-- <ion-item>
+  <ion-img src="{{ productUrl }}">
+  </ion-img>
+  <ion-button (click)="ambilFoto()">
+    foto</ion-button>
+</ion-item> -->
+
+  <!-- <ion-button expand='block' (click)="updateItem()">Update
+</ion-button> -->
+  <ion-footer vertical="bottom" slot="fixed">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="updateItem()">Save</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="danger" (click)="deleteMasterBarang(certainItem.barang_kode)">Delete
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+</ion-app>

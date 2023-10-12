@@ -1,0 +1,33 @@
+<ion-app>
+  <ion-header slot="fixed">
+    <ion-toolbar color="dark">
+      <ion-title>History Jual</ion-title>
+      <ion-icon style="zoom:2.0;" name="filter-outline" slot="end" (click)="openModalFilter()"></ion-icon>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar style="margin-top:4%" (ionChange)=searchFunction() [(ngModel)]="searchText"
+        placeholder="Search by Pembeli"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+        refreshingSpinner="circles" refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+      <ion-item style="overflow-y:scroll!important;" *ngFor="let pr of masterBarangPagination; let i = index;"
+        routerLink='/detailhistoryjual/{{pr.hjual_id}}'>
+        <ion-label>
+          <h3>{{pr.hjual_pembeli}}</h3>
+          <p>{{pr.formatted_hjual_tanggal}}</p>
+          <p>Rp {{thousandSeparator(pr.hjual_total)}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll threshold="5%" id="infinite-scroll" (ionInfinite)="loadProductMore($event)">
+      <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-app>

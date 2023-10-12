@@ -1,0 +1,39 @@
+<ion-toolbar color="dark">
+  <ion-title>Detail Barang</ion-title>
+</ion-toolbar>
+<ion-card>
+  <ion-card-content>
+    <h2><b>Kode Barang : </b></h2>
+    <h2>{{certainItem.barang_kode}}</h2><br>
+    <h2><b>Nama Barang : </b></h2>
+    <h2> {{certainItem.barang_nama}}</h2><br>
+    <h2><b>Deskripsi Barang : </b></h2>
+    <h2> {{certainItem.barang_deskripsi}}</h2><br>
+    <h2><b>Harga Jual : </b></h2>
+    <h2> Rp {{thousandSeparator(certainItem.barang_hargajual)}}</h2><br>
+    <h2><b>Harga Beli : </b></h2>
+    <h2> Rp {{thousandSeparator(certainItem.barang_hargabeli)}}</h2><br>
+    <h2><b>Status Barang : </b></h2>
+    <h2> {{certainItem.barang_status}}</h2><br>
+    <h2><b>Last Update Harga Jual : </b></h2>
+    <h2> {{certainItem.barang_lastupdate_hjual}}</h2><br>
+    <h2><b>Last Update Harga Beli : </b></h2>
+    <h2> {{certainItem.barang_lastupdate_hbeli}}</h2><br>
+  </ion-card-content>
+</ion-card>
+<!-- <ion-button style="padding-left: 4%;" (click)="updateItem(certainItem.barang_kode)">Update</ion-button>
+<ion-button style="padding-right: 4%;float:right;"color="danger" (click)="deleteMasterBarang(certainItem.barang_kode)">Delete</ion-button> -->
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" (click)="updateItem(certainItem.barang_kode)">Update</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="danger" (click)="deleteMasterBarang(certainItem.barang_kode)">Delete
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

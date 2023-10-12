@@ -1,0 +1,22 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Cart</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="dismissModal()">Close</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item style="overflow-y:scroll!important;" *ngFor="let pr of masterBarangBasket; let i = index;">
+        <ion-label>
+          <h3>{{pr.barang_nama}}</h3>
+          <p>{{pr.barang_deskripsi}}</p>
+          <p>Rp. {{thousandSeparator(pr.barang_hargajual)}}</p>
+          <p>Jumlah Barang : {{pr.amount}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-app>

@@ -1,0 +1,33 @@
+<ion-toolbar color="dark">
+  <ion-title>Insert Barang</ion-title>
+</ion-toolbar>
+<ion-item>
+  <ion-label position='stacked'>Nama Barang</ion-label>
+  <ion-input type='string' [(ngModel)]="barang_nama" placeholder="Nama Barang" required></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='stacked'>Deskripsi Barang</ion-label>
+  <ion-input type='string' [(ngModel)]="barang_deskripsi" placeholder="Deskripsi Barang"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='stacked'>Harga Jual</ion-label>
+  <ion-input type='string' [(ngModel)]="barang_hargajual" placeholder="Harga Jual"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='stacked'>Harga Beli</ion-label>
+  <ion-input type='string' [(ngModel)]="barang_hargabeli" placeholder="Harga Beli"></ion-input>
+</ion-item>
+<!-- <ion-item>
+  <ion-img src="{{ productUrl }}">
+  </ion-img>
+  <ion-button (click)="ambilFoto()">
+    foto</ion-button>
+</ion-item> -->
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-button expand='block' (click)="insertItem()">Insert
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

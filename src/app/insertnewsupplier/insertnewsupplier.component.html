@@ -1,0 +1,29 @@
+<ion-toolbar color="dark">
+  <ion-title>Insert Supplier</ion-title>
+</ion-toolbar>
+<ion-item>
+  <ion-label position='stacked'>Nama</ion-label>
+  <ion-input type='string' [(ngModel)]="supplier_nama" placeholder="Nama"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='stacked'>Alamat</ion-label>
+  <ion-input type='string' [(ngModel)]="supplier_alamat" placeholder="Alamat"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='stacked'>Telepon</ion-label>
+  <ion-input type='string' [(ngModel)]="supplier_telepon" placeholder="Telepon"></ion-input>
+</ion-item>
+<!-- <ion-item>
+  <ion-img src="{{ productUrl }}">
+  </ion-img>
+  <ion-button (click)="ambilFoto()">
+    foto</ion-button>
+</ion-item> -->
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-button expand='block' (click)="insertSupplier()">Insert
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

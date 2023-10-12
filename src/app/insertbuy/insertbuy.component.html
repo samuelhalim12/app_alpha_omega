@@ -1,0 +1,66 @@
+<ion-app>
+  <ion-header slot="fixed">
+    <ion-toolbar color="dark">
+      <ion-icon style="zoom:2.0;" slot="end" name="trash-outline" (click)="doRefresh2()"></ion-icon>
+      <ion-title>+ Buy Order</ion-title>
+      <ion-badge color="primary" slot="end" [(ngModel)]="numOfItem" name="numOfItem" ngDefaultControl>{{numOfItem}}
+      </ion-badge>
+      <ion-tabs>
+        <ion-tab *ngFor="let tab of allTabs" [root]="tab.root" tabTitle="tab.title" tabBadge="tab.badge"></ion-tab>
+      </ion-tabs>
+      <ion-icon style="zoom:2.0;" name="cart-outline" slot="end" (click)="openModalBasket()"></ion-icon>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar style="margin-top:4%" (ionChange)=searchFunction() [(ngModel)]="searchText"></ion-searchbar>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+        refreshingSpinner="circles" refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher> -->
+    <ion-list>
+      <div *ngIf="isSearch">
+        <ion-item style="overflow-y:scroll!important;" *ngFor="let pr of masterBarangBuySearch; let i = index;"
+          (click)="openModal(pr.index,pr.barang_nama,pr.barang_deskripsi,pr.barang_hargajual,pr.barang_hargabeli)">
+
+          <ion-label>
+            <h3>{{pr.barang_nama}}</h3>
+            <p>{{pr.barang_deskripsi}}</p>
+            <p>Harga Beli Terakhir : Rp. {{thousandSeparator(pr.barang_hargabeli)}}</p>
+            <!-- <p>Rp. {{pr.barang_hargajual}}</p> -->
+          </ion-label>
+        </ion-item>
+      </div>
+      <div *ngIf="!isSearch">
+        <ion-item style="overflow-y:scroll!important;" *ngFor="let pr of masterBarangBuyPagination; let i = index;"
+          (click)="openModal(pr.index,pr.barang_nama,pr.barang_deskripsi,pr.barang_hargajual,pr.barang_hargabeli)">
+
+          <ion-label>
+            <h3>{{pr.barang_nama}}</h3>
+            <p>{{pr.barang_deskripsi}}</p>
+            <p>Harga Beli Terakhir : Rp. {{thousandSeparator(pr.barang_hargabeli)}}</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ion-list>
+    <ion-infinite-scroll threshold="5%" id="infinite-scroll" (ionInfinite)="loadProductMore($event)">
+      <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+
+  <ion-footer slot="fixed">
+
+    <ion-toolbar>
+      <!-- <ion-input placeholder="Nama Pembeli" style="margin-left:4%" horizontal="start" [(ngModel)]="namaSupplier" required></ion-input> -->
+      <ion-buttons slot="end">
+        <ion-button (click)="nextClick()">
+          <ion-label>Next</ion-label>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-app>

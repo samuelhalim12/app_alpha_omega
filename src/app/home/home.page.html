@@ -1,20 +1,26 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      test
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div *ngIf="isAdmin">
+    <ion-header collapse="condense">
+      <ion-toolbar color="dark">
+        <ion-title>Master</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-button routerLink='/masterbarang' expand="block" style="margin: 4%">Barang</ion-button>
+    <ion-button routerLink='/masterpenjual' expand="block" style="margin: 4%">User</ion-button>
+    <ion-button routerLink='/mastersupplier' expand="block" style="margin: 4%">Supplier</ion-button>
   </div>
+
+  <!-- <div id="container">
+    <strong>Ready </strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div> -->
+
 </ion-content>

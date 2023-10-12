@@ -1,0 +1,21 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Filter History Jual</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="dismissModal()">Close</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-item>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="startDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>End Date</ion-label>
+      <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="endDate"></ion-datetime>
+    </ion-item>
+    <ion-button (click)="confirmation()" expand="block">Confirm</ion-button>
+  </ion-content>
+</ion-app>
